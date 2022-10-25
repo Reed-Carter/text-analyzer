@@ -60,7 +60,39 @@ function uniqueWords(text) {
   return uniqueWords;
 }
 
-// function inputSort(words, occurences) {}
+function inputSort(text) {
+  const words = uniqueWords(text);
+  console.log(words.toString());
+  const occurences = [];
+  const sortedWords = [];
+  words.forEach(function (element) {
+    const occurence = numberOfOccurrencesInText(element, text);
+    console.log(element + ": " + occurence);
+    let valueAdded = false;
+    
+    if (occurences.length === 0) {
+      occurences.push(occurence);
+      sortedWords.push(element);
+    }
+    else {
+      occurences.forEach(function (j, index) {
+        if (!valueAdded) {
+          if (occurence > j) {
+            occurences.splice(index, 0, occurence);
+            sortedWords.splice(index, 0, element);
+            valueAdded = true;
+          }
+          else if (index === occurences.length - 1) { //if at last index, insert at the end
+            occurences.push(occurence);
+            sortedWords.push(element);
+          }
+        }
+      });
+    }
+  });
+
+  return [sortedWords, occurences];
+}
 
 // UI Logic
 function boldPassage(word, text) {
@@ -85,31 +117,16 @@ function boldPassage(word, text) {
 }
 
 function addUpWords(text) {
-  const words = uniqueWords(text);
-  const occurences = [];
-  const sortedWords = [];
-  words.forEach(function (element) {
-    const occurence = numberOfOccurrencesInText(element, text);
-    if (occurences.length === 0) {
-      occurences.push(occurence);
-      sortedWords.push(element);
-    }
-    else {
-      occurences.forEach(function (j, index) {
-        if (occurence > j) {
-          occurences.splice(index, 0, occurence);
-          sortedWords.splice(index, 0, element);
-        }
-        else if (index === occurences.length - 1) {
-          occurences.push(occurence);
-          sortedWords.push(element);
-        }
-      });
-    }
+  let output = inputSort(text);
+  let p = document.createElement("p");
+  console.log(output[0].toString());
+  console.log(output[1].toString());
+
+  output[0].forEach(function (element, index) {
+    p.append(element + ": " + output[1][index]);
+    p.append(document.createElement("br"));
   });
-  console.log(occurences.toString());
-  console.log(sortedWords.toString());
-  return occurences;
+  return p;
 }
 
 function handleFormSubmission() {
@@ -126,7 +143,8 @@ function handleFormSubmission() {
   } else {
     document.querySelector("div#bolded-passage").innerText = null;
   }
-  document.getElementById("counted-words").innerText = addUpWords(passage);
+  let outputText = addUpWords(passage);
+  document.getElementById("counted-words").append(outputText);
 }
 
 window.addEventListener("load", function () {
