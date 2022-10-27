@@ -1,4 +1,28 @@
-# text-analyzer
+# Text Analyzer
+
+#### By Reed Carter and Daniel Yakolev
+
+#### A Website to Analyze a Passage of Text
+
+## Technologies Used
+
+* HTML
+* CSS
+* JS
+* GitHub
+
+## Description
+
+This is a website that analyzes a passage of text. It is capable of determining a word count, counting the number of occurences of a specific word, removing innapropriate words, and finding unique words. More details can be found here: https://epicenter.epicodus.com/courses/1068/code_reviews/6793
+
+## Setup/Installation Requirements
+
+* Clone this repository to your desktop
+* Navigate to the top level directory
+* Open index.html in your browser
+
+## Tests
+```
 Describe: wordCounter()
 
 Test: "It should return 1 if a passage has just one word."
