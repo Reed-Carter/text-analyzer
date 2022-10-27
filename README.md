@@ -13,7 +13,7 @@
 
 ## Description
 
-This is a website that analyzes a passage of text. It is capable of determining a word count, counting the number of occurences of a specific word, removing innapropriate words, and finding unique words. More details can be found here: https://epicenter.epicodus.com/courses/1068/code_reviews/6793
+This is a website that analyzes a passage of text. It is capable of determining a word count, counting the number of occurences of a specific word, removing innapropriate words, and finding unique words. More details can be found here: https://github.com/Reed-Carter/text-analyzer.git
 
 ## Setup/Installation Requirements
 
